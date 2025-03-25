@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '**/.py'
+      - '**/*.py'
 
 permissions:
   contents: read
