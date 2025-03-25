@@ -34,10 +34,12 @@ def get_fish_info(name: str = None):
         (__type__): The API response.
     """
     if name:
-        response = requests.get(url=f"{URL}/{name}", headers=headers)
+        response = requests.get(
+            url=f"{URL}/{name}", headers=headers, timeout=10)
     else:
         params = {'excludedetails': 'true'}
-        response = requests.get(url=URL, headers=headers, params=params)
+        response = requests.get(url=URL, headers=headers,
+                                params=params, timeout=30)
 
     if response.status_code != 200:
         return (response.status_code, "Something went wrong.")
