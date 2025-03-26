@@ -3,15 +3,9 @@ name: Lint Code Base
 on:
   push:
     branches: ["main"]
-    paths:
-      - 'api/**'
-      - 'src/**'
 
   pull_request:
     branches: ["main"]
-    paths:
-      - 'api/**'
-      - 'src/**'
   
   workflow_dispatch:
 
