@@ -75,7 +75,7 @@ def make_fish_list_route(app: Flask, db: SQLAlchemy):
                 size=fish_info["shadow_size"],
                 time=available["time"],
                 nh_months=fish_info["north"]["months"],
-                sh_months=fish_info["south"]["months"]
+                sh_months=fish_info["south"]["months"],
             )
 
             try:

@@ -28,6 +28,7 @@ jobs:
           FILTER_REGEX_EXCLUDE: "(README.md|\\.github/.*|images/.*)"
           VALIDATE_PYTHON_BLACK: false
           VALIDATE_PYTHON_ISORT: false
+          VALIDATE_PYTHON_PYINK: false
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_GITHUB_ACTIONS: false
           VALIDATE_JAVASCRIPT_ES: false
