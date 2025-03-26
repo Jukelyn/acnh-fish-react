@@ -36,8 +36,10 @@ def get_fish_info(name: str = ""):
                                 timeout=10)
     else:
         params = {'excludedetails': 'true'}
-        response = requests.get(url=URL, headers=headers,
-                                params=params, timeout=30)
+        response = requests.get(url=URL,
+                                headers=headers,
+                                params=params,
+                                timeout=30)
 
     if response.status_code != 200:
         return (response.status_code, "Something went wrong.")
@@ -52,6 +54,7 @@ def make_fish_list_route(app: Flask, db: SQLAlchemy):
     Args:
         app (Flask): The Flask application instance.
     """
+
     @app.route("/make_fish_list", methods=["GET"])
     def make_fish_list():
         """
@@ -63,16 +66,18 @@ def make_fish_list_route(app: Flask, db: SQLAlchemy):
 
             available = fish_info["north"]["availability_array"][0]
 
-            new_fish = Fish(name=fish_info["name"],
-                            image_url=fish_info["image_url"],
-                            rarity=fish_info["rarity"],
-                            price=fish_info["sell_nook"],
-                            location=fish_info["location"],
-                            size=fish_info["shadow_size"],
-                            time=available["time"],
-                            nh_months=fish_info["north"]["months"],
-                            sh_months=fish_info["south"]["months"]
-                            )
+            new_fish = Fish(
+                name=fish_info["name"],
+                image_url=fish_info["image_url"],
+                rarity=fish_info["rarity"],
+                price=fish_info["sell_nook"],
+                location=fish_info["location"],
+                size=fish_info["shadow_size"],
+                time=available["time"],
+                nh_months=fish_info["north"]["months"],
+                sh_months=fish_info["south"]["months"]
+            )
+
             try:
                 db.session.add(new_fish)
                 db.session.commit()
