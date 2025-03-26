@@ -78,15 +78,15 @@ def make_fish_list_route(app: Flask, db: SQLAlchemy):
             try:
                 db.session.add(new_fish)
                 db.session.commit()
-            except IntegrityError as e:
+            except IntegrityError:
                 db.session.rollback()
-                return jsonify({"message": f"Integrity error: {e}"}), 400
-            except OperationalError as e:
+                return jsonify({"message": "Integrity error."}), 400
+            except OperationalError:
                 db.session.rollback()
-                return jsonify({"message": f"Operational error: {e}"}), 500
-            except (DatabaseError, StatementError, InvalidRequestError) as e:
+                return jsonify({"message": "Operational error."}), 500
+            except (DatabaseError, StatementError, InvalidRequestError):
                 db.session.rollback()
-                return jsonify({"message": str(e)}), 500
+                return jsonify({"message": "There was an error."}), 500
             except Exception as e:  # pylint: disable=W0718
                 db.session.rollback()
                 return jsonify({"message": f"Unexpected error: {e}"}), 500
