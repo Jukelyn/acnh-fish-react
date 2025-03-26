@@ -1,17 +1,6 @@
 import { useState } from "react";
-
-interface Fish {
-  id: number;
-  name: string;
-  imageUrl: string;
-  rarity: string;
-  price: string;
-  size: string;
-  location: string;
-  nhMonths: string;
-  shMonths: string;
-  time: string;
-}
+import { Fish } from "./Fish";
+import AccordionBody from "./AccordionBody";
 
 interface Props {
   heading: string;
@@ -58,57 +47,7 @@ function FishList({ heading, items, onSelectedFish }: Props) {
                 aria-labelledby={`heading-${fish.id}`}
                 data-bs-parent="#fishAccordion"
               >
-                <div className="accordion-body">
-                  <div className="container-sm text-center">
-                    <div className="row">
-                      <div>
-                        <img src={fish.imageUrl} alt={fish.name} />
-                      </div>
-                      <div className="d-flex justify-content-center">
-                        <div className="fish-card">
-                          <div className="row">
-                            <div className="fish-card-info fish-card-info-name">
-                              {fish.name}
-                            </div>
-                          </div>
-                          <div className="row fish-card-info fish-card-info-rarity">
-                            Rarity: {fish.rarity}
-                          </div>
-                          <div className="row fish-card-info fish-card-info-price">
-                            {fish.price} Bells
-                          </div>
-                          <div className="row fish-card-info fish-card-info-time">
-                            Time: {fish.time}
-                          </div>
-                          <div className="row fish-card-info fish-card-info-location">
-                            Location: {fish.location}
-                          </div>
-                          <div className="row fish-card-info fish-card-info-size">
-                            Size: {fish.size}
-                          </div>
-                          <div
-                            className="row fish-card-info fish-card-info-months"
-                            style={{ width: "100%" }}
-                          >
-                            NH Months:
-                            <div className="text-center">
-                              {fish.nhMonths}
-                            </div>
-                          </div>
-                          <div
-                            className="row fish-card-info fish-card-info-months"
-                            style={{ width: "100%" }}
-                          >
-                            SH Months:
-                            <div className="text-center">
-                              {fish.shMonths}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <AccordionBody fish={fish} />
               </div>
             </div>
           ))}

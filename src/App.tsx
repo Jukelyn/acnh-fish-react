@@ -20,10 +20,9 @@ function App() {
     const data = await response.json();
     console.log("Fetched data:", data);
     console.log("Fish array:", data.fish);
-  
+
     setFish(data.fish);
   };
-
 
   return (
     <div className="d-flex justify-content-center">
