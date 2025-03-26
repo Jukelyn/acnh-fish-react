@@ -10,12 +10,10 @@ on:
   pull_request:
     branches: ["main"]
     paths:
+      - 'api/**'
       - 'src/**'
-      - 'static/**'
-      - 'templates/**'
-      - 'data/**'
-      - 'docker-compose.yaml'
-      - 'Dockerfile'
+  
+  workflow_dispatch:
 
 permissions:
   contents: read
