@@ -15,15 +15,12 @@ load_dotenv()
 
 API_KEY = os.getenv("NOOKIPEDIA_API_KEY")
 
-headers = {
-    "X-API-KEY": API_KEY,
-    "Accept-Version": "1.7.0"
-}
+headers = {"X-API-KEY": API_KEY, "Accept-Version": "1.7.0"}
 
 URL = "https://api.nookipedia.com/nh/fish"
 
 
-def get_fish_info(name: str = None):
+def get_fish_info(name: str = ""):
     """
     Get's the fish info based on the name.
 
@@ -34,8 +31,9 @@ def get_fish_info(name: str = None):
         (__type__): The API response.
     """
     if name:
-        response = requests.get(
-            url=f"{URL}/{name}", headers=headers, timeout=10)
+        response = requests.get(url=f"{URL}/{name}",
+                                headers=headers,
+                                timeout=10)
     else:
         params = {'excludedetails': 'true'}
         response = requests.get(url=URL, headers=headers,
