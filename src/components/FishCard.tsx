@@ -1,11 +1,49 @@
+import { ReactNode, CSSProperties } from "react";
 import { Fish } from "./Fish";
-import FishCardInfo from "./FishCardInfo";
 
-interface Props {
+interface FishCardProps {
   fish: Fish;
 }
 
-const FishCard = ({ fish }: Props) => {
+interface FishCardInfoProps {
+  fish: Fish;
+  fishProperty: keyof Fish;
+  children: ReactNode;
+  reverse?: boolean;
+  customStyle?: CSSProperties;
+}
+
+const FishCardInfo = ({
+  fish,
+  fishProperty,
+  children,
+  reverse = false,
+  customStyle = {},
+}: FishCardInfoProps) => {
+  const className = `row fish-card-info ${
+    fishProperty === "nhMonths" || fishProperty === "shMonths"
+      ? "fish-card-info-months"
+      : `fish-card-info-${fishProperty}`
+  }`;
+
+  return (
+    <div className={className} style={customStyle}>
+      {fishProperty === "nhMonths" || fishProperty === "shMonths" ? (
+        children
+      ) : reverse ? (
+        <>
+          {fish[fishProperty]} {children}
+        </>
+      ) : (
+        <>
+          {children} {fish[fishProperty]}
+        </>
+      )}
+    </div>
+  );
+};
+
+const FishCard = ({ fish }: FishCardProps) => {
   return (
     <div className="d-flex justify-content-center">
       <div className="fish-card">
