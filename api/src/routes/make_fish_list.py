@@ -26,9 +26,6 @@ def get_fish_info(name: str = ""):
 
     Args:
         name (str): The fish name.
-
-    Returns:
-        (__type__): The API response.
     """
     if name:
         response = requests.get(url=f"{URL}/{name}",
