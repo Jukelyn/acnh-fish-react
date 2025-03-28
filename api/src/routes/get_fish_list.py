@@ -8,16 +8,18 @@ from src.models import Fish
 
 def get_fish_list_route(app: Flask):
     """
-    Register the make_fish_list route with the Flask app.
+    Register the get_fish_list route with the Flask app.
 
     Args:
         app (Flask): The Flask application instance.
     """
+
     @app.route("/get_fish_list", methods=["GET"])
     def get_fish_list():
         """
-        Handles requests to the '/make_fish_list' route.
+        Handles requests to the '/get_fish_list' route.
         """
+
         all_fish = Fish.query.all()
         all_fish_json = list(map(lambda x: x.to_json(), all_fish))
 

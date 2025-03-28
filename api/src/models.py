@@ -4,10 +4,11 @@ This module defines the database for the application.
 from .database import db
 
 
-class Fish(db.Model):  # pylint: disable=R0903
+class Fish(db.Model):
     """
     The database model for the fish.
     """
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False)
     image_url = db.Column(db.String(300), nullable=False)
@@ -26,6 +27,7 @@ class Fish(db.Model):  # pylint: disable=R0903
         Returns:
             (dict): JSON representation of fish data.
         """
+
         return {
             "id": self.id,
             "name": self.name,
@@ -38,3 +40,13 @@ class Fish(db.Model):  # pylint: disable=R0903
             "nhMonths": self.nh_months,
             "shMonths": self.sh_months,
         }
+
+    def __repr__(self) -> str:
+        """
+        Returns a string representation of the Fish object.
+
+        Returns:
+            (str): A formatted string representing the Fish instance.
+        """
+
+        return f"<Fish(name={self.name})>"

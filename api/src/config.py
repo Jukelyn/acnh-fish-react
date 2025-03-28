@@ -24,7 +24,9 @@ load_dotenv()
 
 
 def config_app():
-    """Initializes the flask app and database"""
+    """
+    Initializes the flask app and database
+    """
 
     app = Flask(__name__)
 

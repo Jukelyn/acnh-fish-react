@@ -57,6 +57,7 @@ def make_fish_list_route(app: Flask, db: SQLAlchemy):
         """
         Handles requests to the '/make_fish_list' route.
         """
+
         _, fish_arr = get_fish_info()
         for fish in fish_arr:
             _, fish_info = get_fish_info(fish)
